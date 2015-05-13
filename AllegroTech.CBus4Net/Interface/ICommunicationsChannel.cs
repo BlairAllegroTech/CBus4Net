@@ -8,6 +8,7 @@ namespace AllegroTech.CBus4Net.Interface
 {
     public interface ICommunicationChannel
     {
-        void SendBytes(byte[] commandBytes, int p);
+        void SendBytes(byte[] commandBytes, int MessageLength);
+        int ReceiveBytes(byte[] rxBuffer, int BufferLength);
     }
 }

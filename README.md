@@ -3,4 +3,10 @@
 
 CBus Protocol in C#.
 
-Initial version still not building, ported from another project. I still need to remove dependancies before this project is ready for use.
+Still in Alpha, but all protocol tests are now running and passing.
+
+Can receive and send CBus
+* Lighting Commands
+* Trigger Commands
+
+Still to come a working example that controls lighting, watch this space
