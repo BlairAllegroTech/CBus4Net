@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("AllegroTech Technology Ltd (NZ)")]
 [assembly: AssemblyProduct("AllegroTech.CBus4Net.Test")]
-[assembly: AssemblyCopyright("Copyright © AllegroTech (NZ) 2015")]
+[assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("AllegroTech")]
 [assembly: AssemblyCulture("")]
 

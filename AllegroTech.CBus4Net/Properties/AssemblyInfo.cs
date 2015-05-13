@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("AllegroTech.CBus4Net")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Allegro Technology Ltd (NZ)")]
+[assembly: AssemblyCompany("Allegro Technology (NZ)")]
 [assembly: AssemblyProduct("AllegroTech.CBus4Net")]
-[assembly: AssemblyCopyright("AllegroTech.CBus4Net Ltd (NZ) 2015")]
+[assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("AllegroTech")]
 [assembly: AssemblyCulture("")]
 
