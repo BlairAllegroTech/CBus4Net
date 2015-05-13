@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
-using NUnit.Framework;
+using Xunit;
 
 namespace AllegroTech.CBus4Net.Test
 {
     /// <summary>
     /// There are still more CBus addressing issues to resolve
     /// For bridging etc....
-    /// </summary>
-    [TestFixture]
+    /// </summary>    
+    [Trait("CBus", "CAL Commands")]
     public class CBusCALCommandTest
     {
         private static void ValidateCALMessage(Protocol.CBusCALCommand cmd, string cmdString)
@@ -18,11 +18,14 @@ namespace AllegroTech.CBus4Net.Test
             if (!cmd.IncludeChecksum)
                 expectedMessageLength--;
 
-            Assert.AreEqual(expectedMessageLength, cmdString.Length, "Unexpected CBus CAL command length, check hex number formatting?");
+            // "Unexpected CBus CAL command length, check hex number formatting?");
+            Assert.Equal(
+                expectedMessageLength, 
+                cmdString.Length);
         }
 
 
-        [Test]
+        [Fact]
         public void Generate_CAL_ResetCommand()
         {
             Console.WriteLine(
@@ -30,10 +33,10 @@ namespace AllegroTech.CBus4Net.Test
              );
         }
 
-        [Test]
+        [Fact]
         public void Generate_CAL_Options1_Command()
         {
-            var cmd = Protocol.CBusCALCommandBuilder.Build_SetCAL_Options1(CBus.Protocol.CBusProtcol.Interface_Options_1.CONNECT);
+            var cmd = Protocol.CBusCALCommandBuilder.Build_SetCAL_Options1(Protocol.CBusProtcol.Interface_Options_1.CONNECT);
 
             Console.WriteLine(cmd);
 
@@ -45,7 +48,7 @@ namespace AllegroTech.CBus4Net.Test
         }
 
 
-        [Test]
+        [Fact]
         public void Generate_CAL_Application1_Command()
         {
             var cmd = Protocol.CBusCALCommandBuilder.Build_RegisterApplication1Monitor(Protocol.CBusProtcol.CBusApplicationId.TRIGGER);
@@ -57,7 +60,7 @@ namespace AllegroTech.CBus4Net.Test
             ValidateCALMessage(cmd, cmdString);
         }
 
-        [Test]
+        [Fact]
         public void Generate_CAL_Application2_Command()
         {
             var cmd = Protocol.CBusCALCommandBuilder.Build_RegisterApplication2Monitor(Protocol.CBusProtcol.CBusApplicationId.TRIGGER);

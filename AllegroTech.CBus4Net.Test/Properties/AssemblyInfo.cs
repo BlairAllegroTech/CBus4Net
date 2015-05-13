@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Atria.AVControl.Device.CBus.Test")]
+[assembly: AssemblyTitle("AllegroTech.CBus4Net.Test")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Atria Technology Ltd (NZ)")]
-[assembly: AssemblyProduct("Atria.AVControl.Device.CBus.Test")]
-[assembly: AssemblyCopyright("Copyright © Atria Technology Ltd (NZ) 2012")]
-[assembly: AssemblyTrademark("AtriaTech")]
+[assembly: AssemblyCompany("AllegroTech Technology Ltd (NZ)")]
+[assembly: AssemblyProduct("AllegroTech.CBus4Net.Test")]
+[assembly: AssemblyCopyright("Copyright © AllegroTech (NZ) 2015")]
+[assembly: AssemblyTrademark("AllegroTech")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 

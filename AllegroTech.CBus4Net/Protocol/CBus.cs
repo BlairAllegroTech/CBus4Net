@@ -581,7 +581,7 @@ namespace AllegroTech.CBus4Net.Protocol
             return false;
         }
 
-        public static void SendCommand(Interface.Communication.ICommunicationChannel CommsChannel, ICBusCommand Command)
+        public static void SendCommand(Interface.ICommunicationChannel CommsChannel, ICBusCommand Command)
         {
             //Send Data, APPEND Telnet Flush characters
             var command = Command.ToCBusString() + "\r\n";            

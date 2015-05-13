@@ -149,7 +149,7 @@ namespace AllegroTech.CBus4Net.Protocol
         {
             var sb = new StringBuilder();
             var data = ToByteArray();
-            sb.Append( CBus.Protocol.CBusProtcol.STX_CHAR);
+            sb.Append( Protocol.CBusProtcol.STX_CHAR);
             foreach (var dat in data)
             {
                 sb.AppendFormat("{0:X2}", dat);
@@ -158,7 +158,7 @@ namespace AllegroTech.CBus4Net.Protocol
             if (this.AckCharacter.HasValue)
                 sb.Append(AckCharacter.Value);            
 
-            sb.Append(CBus.Protocol.CBusProtcol.ETX_CHAR_1);                        
+            sb.Append(Protocol.CBusProtcol.ETX_CHAR_1);                        
             return sb.ToString();
         }
 

@@ -13,7 +13,7 @@ namespace AllegroTech.CBus4Net.Protocol
 
         public string ToCBusString()
         {
-            return CBus.Protocol.CBusProtcol.MODE_RESET_CHAR.ToString();
+            return Protocol.CBusProtcol.MODE_RESET_CHAR.ToString();
         }
 
     }

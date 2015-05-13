@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 
-using NUnit.Framework;
+using Xunit;
 
 namespace AllegroTech.CBus4Net.Test
 {
+    [Trait("CBus", "Lighting")]
     public class CBusLightingTests
     {
-        [Test]
+        [Fact(DisplayName="Test_That_Reference_LightingCommand_Can_Be_Interpreted_Correctly")]
         public void Test_That_Reference_LightingCommand_Can_Be_Interpreted_Correctly()
         {
             //Take from 'C-Bus Quick Start Guide.pdf' Page 7
@@ -18,16 +19,16 @@ namespace AllegroTech.CBus4Net.Test
             CBusAddressMap.AddMapping(Protocol.CBusProtcol.ApplicationTypes.TRIGGER, 0xCA);
 
             Protocol.CBusSALCommand cmd;
-            Assert.IsTrue(
+            Assert.True(
                 CBusAddressMap.TryParseCommand(referenceMessageData, referenceMessageData.Length, false, false, out cmd),
                 "Failed to interpret reference lighting command");
 
-            Assert.IsTrue(
-                cmd.ApplicationType == Atria.AVControl.Device.CBus.Protocol.CBusProtcol.ApplicationTypes.LIGHTING,
+            Assert.True(
+                cmd.ApplicationType == Protocol.CBusProtcol.ApplicationTypes.LIGHTING,
                 "Expected Lighting Command Type");
         }
 
-        [Test]
+        [Fact(DisplayName="Test_That_Reference_LightingCommand_Can_Be_Parsed_Correctly")]
         public void Test_That_Reference_LightingCommand_Can_Be_Parsed_Correctly()
         {
             //Take from 'C-Bus Quick Start Guide.pdf' Page 7
@@ -49,7 +50,7 @@ namespace AllegroTech.CBus4Net.Test
 
             var data = referenceMessageData.ToCharArray();
             int dataIndex = 0;
-            Assert.IsTrue(
+            Assert.True(
                     cbusProtocol.TryProcessReceivedBytes(
                         data, data.Length,
                         ref dataIndex, _state
@@ -59,23 +60,18 @@ namespace AllegroTech.CBus4Net.Test
                     );
         }
 
-        [Test]
-        public void Test_That_Reference_LightingCommand_Can_Be_Parsed_And_The_Result_Interpreted_Correctly(
-            [Values(
-            //"0503380002473D3DFD\r", 
-            //"050338000249FF79FD\r", 
-            //"050338000248FF7AFD\r",
-            //"0503380002462E4DFD\r",
+        [Theory(DisplayName="Test_That_Reference_LightingCommand_Can_Be_Parsed_And_The_Result_Interpreted_Correctly")]
+        
+        //[InlineData("0503380002473D3DFD\r\n")], 
+        //"050338000249FF79FD\r", 
+        //"050338000248FF7AFD\r",
+        //"0503380002462E4DFD\r",
 
-            "050138000A07000A06000A05000A040084\r\n",
-            //"056438007922C4\r\n",
+        [InlineData("050138000A07000A06000A05000A040084\r\n")]
+        //"056438007922C4\r\n",
 
-            "05013800794679c2793379346F\r\n"
-            //"0"
-            )]
-            string referenceMessageData
-
-            )
+        [InlineData("05013800794679c2793379346F\r\n")]        
+        public void Test_That_Reference_LightingCommand_Can_Be_Parsed_And_The_Result_Interpreted_Correctly(string referenceMessageData)
         {
             //Take from 'C-Bus Quick Start Guide.pdf' Page 7
             //var referenceMessageData = "0538007988C2\r";
@@ -109,7 +105,7 @@ namespace AllegroTech.CBus4Net.Test
             var state = new Protocol.CBusProtcol.CBusStateMachine();
             var data = referenceMessageData.ToCharArray();
             int dataIndex = 0;
-            Assert.IsTrue(
+            Assert.True(
                     cbusProtocol.TryProcessReceivedBytes(
                         data, data.Length,
                         ref dataIndex, state
@@ -121,15 +117,18 @@ namespace AllegroTech.CBus4Net.Test
 
             var isMonitoredSAL = (state.MessageType== Protocol.CBusProtcol.CBusMessageType.MONITORED_SAL_MESSAGE_RECEIVED);
             Protocol.CBusSALCommand cmd;
-            Assert.IsTrue(
+            Assert.True(
                 CBusAddressMap.TryParseCommand(state.CommandBytes, state.CommandLength, isMonitoredSAL, false, out cmd),
                 "Failed to interpret reference lighting command"
                 );
 
-            Assert.AreEqual(Protocol.CBusProtcol.ApplicationTypes.LIGHTING, cmd.ApplicationType, "Expected lighting Command Type");
+            // Expected lighting Command Type
+            Assert.Equal(
+                Protocol.CBusProtcol.ApplicationTypes.LIGHTING, 
+                cmd.ApplicationType);
 
             Console.WriteLine("Parsed Command:{0}", cmd);
-            foreach (var c in ((CBus.Protocol.CBusLightingCommand)cmd).Commands())
+            foreach (var c in ((Protocol.CBusLightingCommand)cmd).Commands())
             {
                 Console.WriteLine("Child Command: **{0}**", c);
             }

@@ -10,7 +10,7 @@ namespace AllegroTech.CBus4Net
 {   
     using Tools;
     using Interface.Common;
-    using Atria.AVControl.Command.Device;
+    using AllegroTech.AVControl.Command.Device;
     using Protocol;
 
     [MetaData.DeviceClassificationAttribute(MetaData.DeviceClassification.LIGHTING)]
@@ -525,7 +525,7 @@ namespace AllegroTech.CBus4Net
 
         
 
-        protected override bool OnProcessCommand(Atria.AVControl.Interface.Common.ICommand Command)
+        protected override bool OnProcessCommand(AllegroTech.AVControl.Interface.Common.ICommand Command)
         {
             if (Command is LightingDeviceCommand)
             {
