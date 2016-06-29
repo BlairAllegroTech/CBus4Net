@@ -63,11 +63,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\AllegroTech.CBus4Net\Properties\AssemblyInfo.cs">
+      <Link>Properties\AssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="CBusCALCommandTest.cs" />
     <Compile Include="CBusLightingTest.cs" />
     <Compile Include="CBusTriggerTest.cs" />
     <Compile Include="ProtocolTests.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AllegroTech.CBus4Net\AllegroTech.CBus4Net.csproj">
